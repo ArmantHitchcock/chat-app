@@ -66,7 +66,7 @@ io.on('connection', (socket)=>{
         }
         socket.join(user.room)
 
-        socket.emit('messageIOFunc', generateMessage('Admin',varMessage)) //data out______________________
+        socket.emit('messageIOFunc', generateMessage('Admin2',varMessage)) //data out______________________
         socket.broadcast.to(user.room).emit('messageIOFunc', generateMessage(`${user.username} has joined`)) //data out______________________
         io.to(user.room).emit('roomData', {
             room: user.room,
@@ -97,7 +97,7 @@ io.on('connection', (socket)=>{
     socket.on('disconnect', function () {
         const user = removeUser(socket.id)
         if (user) {
-            io.to(user.room).emit('messageIOFunc', generateMessage('Admin', `${user.username} has left`)) //data out______________________
+            io.to(user.room).emit('messageIOFunc', generateMessage('Admin2', `${user.username} has left`)) //data out______________________
             io.to(user.room).emit('roomData', {
                 room: user.room,
                 users: getUsersInRoom(user.room)
